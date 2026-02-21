@@ -11,7 +11,10 @@ export default function BottomNav({ tab, setTab, notifs }) {
   const unread = notifs.filter((n) => !n.read).length
 
   return (
-    <nav className="lg:hidden flex bg-white border-t border-slate-100 safe-bottom">
+    // make the nav fixed at the bottom and only hide it on very wide (desktop) viewports
+    // `xl:hidden` keeps it visible on phones even if the browser reports >1024px width
+    // add a small bottom padding in addition to safe-area inset for Android nav bars
+    <nav className="xl:hidden fixed bottom-0 left-0 right-0 flex bg-white border-t border-slate-100 safe-bottom pb-2">
       {NAV_ITEMS.map((n) => (
         <button
           key={n.id}
